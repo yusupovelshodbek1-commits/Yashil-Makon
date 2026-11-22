@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yashil Makon — Shahrimiz Volontyorlar Harakati</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --card-soft: #f8fbf9;
+      --primary: #1b6b3a;
+      --primary-dark: #134e2a;
+      --primary-light: #e4f3e9;
+      --accent: #34a853;
+      --text: #18261d;
+      --muted: #566b5d;
+      --border: #e2ebe5;
+      --shadow: 0 10px 25px rgba(27, 107, 58, 0.07);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navigatsiya */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      width: 38px;
+      height: 38px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-instagram {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #fff;
+    }
+
+    .btn-instagram:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-telegram {
+      background: #229ED9;
+      color: #fff;
+    }
+
+    .btn-telegram:hover {
+      background: #1b86b8;
+      transform: translateY(-1px);
+    }
+
+    .btn-channel {
+      background: #1682b5;
+      color: #fff;
+    }
+
+    .btn-channel:hover {
+      background: #126a94;
+      transform: translateY(-1px);
+    }
+
+    /* Asosiy qism (Hero) */
+    .hero {
+      background: linear-gradient(135deg, #134e2a 0%, #1f7a42 60%, #2e9c57 100%);
+      color: #fff;
+      padding: 72px 20px 88px;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.16);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.92;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero .btn-white {
+      background: #fff;
+      color: var(--primary-dark);
+    }
+
+    .hero .btn-white:hover {
+      background: #eef7f1;
+    }
+
+    .hero .btn-glass {
+      background: rgba(255, 255, 255, 0.16);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .hero .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Konteyner */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Statistika kartochkalari */
+    .stats-section {
+      margin-top: -46px;
+      margin-bottom: 40px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .stat-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-size: 1.65rem;
+      flex-shrink: 0;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* Bo'limlar */
+    section {
+      padding: 40px 0;
+      background-color: #ffffff;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    /* Jamoa sardorlari kartochkalari */
+    .leaders-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+
+    .leader-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 18px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease;
+    }
+
+    .leader-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .leader-avatar {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: grid;
+      place-items: center;
+    }
+
+    .leader-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .leader-role {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* Qidiruv va filtr */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      padding: 8px 15px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pill.active, .pill:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .search-input {
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      min-width: 240px;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    /* Hududlar ro'yxati */
+    .places-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 20px;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      background: #ffffff;
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 42px 20px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .empty-state span {
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .place-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s;
+    }
+
+    .place-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .place-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .place-date {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .place-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .place-desc {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 16px;
+    }
+
+    .place-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Murojaat uchun bo'limi */
+    .panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .panel > p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 14px;
+      background: var(--card-soft);
+      border: 1px solid var(--border);
+    }
+
+    .contact-item-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .contact-item span,
+    .contact-item a.phone-link {
+      font-size: 0.92rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-item a.phone-link:hover {
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      background: #12291b;
+      color: #cfe3d6;
+      padding: 36px 20px;
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    footer strong {
+      color: #fff;
+    }
+
+    @media (max-width: 760px) {
+      nav a:not(.btn) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigatsiya -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <div class="logo-badge">🌱</div>
+        <span>Yashil Makon</span>
+      </a>
+      <nav>
+        <a href="#statistika">Statistika</a>
+        <a href="#sardorlar">Sardorlar</a>
+        <a href="#hududlar">Hududlar</a>
+        <a href="#murojaat" class="btn btn-primary">Murojaat uchun</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Asosiy banner -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="tag">🌿 Shahrimiz Volontyorlar Loyihasi</span>
+      <h1>Har bir nihol — kelajak uchun toza nafas</h1>
+      <p>
+        “Yashil Makon” — shahrimizni ko‘kalamzorlashtirish, bog‘ va ko‘chalarga daraxt ekish hamda tabiatni asrash uchun birlashgan faol yoshlar jamoasi.
+      </p>
+      <div class="hero-actions">
+        <a href="#murojaat" class="btn btn-white">Murojaat uchun</a>
+        <a href="#sardorlar" class="btn btn-glass">Jamoa sardorlari</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistika bo'limi -->
+  <div class="container stats-section" id="statistika">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">🤝</div>
+        <div>
+          <div class="stat-number" id="volunteerCount">5</div>
+          <div class="stat-label">Jamoadagi volontyorlar</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">🌳</div>
+        <div>
+          <div class="stat-number" id="treeCount">0</div>
+          <div class="stat-label">Ekilgan daraxt va o‘simliklar</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">📍</div>
+        <div>
+          <div class="stat-number" id="placeCount">0</div>
+          <div class="stat-label">Obodonlashtirilgan hududlar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jamoa sardorlari bo'limi -->
+  <section id="sardorlar">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Jamoa sardorlari</h2>
+          <p>“Yashil Makon” loyihasini boshqaruvchi va tashkilotchi yetakchilarimiz</p>
+        </div>
+      </div>
+
+      <div class="leaders-grid">
+        <div class="leader-card">
+          <div class="leader-avatar">YE</div>
+          <h3>Yusupov Elshodbek</h3>
+          <span class="leader-role">Jamoa sardori</span>
+        </div>
+
+        <div class="leader-card">
+          <div class="leader-avatar">CM</div>
+          <h3>Choriyev Miraziz</h3>
+          <span class="leader-role">Jamoa sardori</span>
+        </div>
+
+        <div class="leader-card">
+          <div class="leader-avatar">MS</div>
+          <h3>Madibraimova Shabnam</h3>
+          <span class="leader-role">Jamoa sardori</span>
+        </div>
+
+        <div class="leader-card">
+          <div class="leader-avatar">SA</div>
+          <h3>Sobirmatova Asilzoda</h3>
+          <span class="leader-role">Jamoa sardori</span>
+        </div>
+
+        <div class="leader-card">
+          <div class="leader-avatar">AD</div>
+          <h3>Abduhomidova Dilnura</h3>
+          <span class="leader-role">Jamoa sardori</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Borgan joylarimiz ro'yxati -->
+  <section id="hududlar">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Biz tashrif buyurgan hududlar</h2>
+          <p>Jamoamiz bilan ko‘chat ekkan va obodonlashtirgan manzillar ro‘yxati</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="filter-pills" id="filterPills">
+          <button class="pill active" data-filter="Barchasi">Barchasi</button>
+          <button class="pill" data-filter="Istirohat bog‘i">Istirohat bog‘i</button>
+          <button class="pill" data-filter="Maktab">Maktab</button>
+          <button class="pill" data-filter="Ko‘cha">Ko‘cha</button>
+          <button class="pill" data-filter="Sohil bo‘yi">Sohil bo‘yi</button>
+        </div>
+
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Hudud yoki daraxt turini qidiring..."
+        />
+      </div>
+
+      <div class="places-grid" id="placesGrid"></div>
+    </div>
+  </section>
+
+  <!-- Murojaat uchun bo'limi -->
+  <section id="murojaat">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Murojaat uchun</h2>
+          <p>Takliflar, hamkorlik yoki ko‘chat ekish bo‘yicha hudud tavsiya qilish uchun biz bilan bog‘laning</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Aloqa va ijtimoiy tarmoqlarimiz</h3>
+        <p>Savol va takliflaringiz bo‘lsa, qo‘ng‘iroq qiling, Telegram orqali yozing yoki kanal va sahifalarimizni kuzatib boring.</p>
+
+        <div class="contact-cards">
+          <div class="contact-item">
+            <div class="contact-item-top">
+              <div class="contact-icon">📍</div>
+              <div>
+                <strong>Manzil</strong>
+                <span>Angren shahri, Toshkent viloyati</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-top">
+              <div class="contact-icon">📞</div>
+              <div>
+                <strong>Telefon raqam</strong>
+                <a href="tel:+998336137413" class="phone-link">+998 33 613 74 13</a>
+              </div>
+            </div>
+            <a href="tel:+998336137413" class="btn btn-primary">
+              Qo‘ng‘iroq qilish
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-top">
+              <div class="contact-icon">✈️</div>
+              <div>
+                <strong>Telegram murojaat</strong>
+                <span>@ApexGGs</span>
+              </div>
+            </div>
+            <a href="https://t.me/ApexGGs" target="_blank" rel="noopener noreferrer" class="btn btn-telegram">
+              Telegramda yozish
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-top">
+              <div class="contact-icon">📢</div>
+              <div>
+                <strong>Telegram kanalimiz</strong>
+                <span>@Yashil_Makon_Angren</span>
+              </div>
+            </div>
+            <a href="https://t.me/Yashil_Makon_Angren" target="_blank" rel="noopener noreferrer" class="btn btn-channel">
+              Kanalga o‘tish
+            </a>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-top">
+              <div class="contact-icon">📸</div>
+              <div>
+                <strong>Instagram sahifamiz</strong>
+                <span>@yashi_lmakonuz</span>
+              </div>
+            </div>
+            <a href="https://www.instagram.com/yashi_lmakonuz?dmpr=NGJqdG91Y2htdXY0" target="_blank" rel="noopener noreferrer" class="btn btn-instagram">
+              Instagramga o‘tish
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p><strong>Yashil Makon</strong> — Shahar Volontyorlar Harakati &copy; 2026</p>
+      <p style="margin-top: 6px; opacity: 0.8;">Tabiatni birgalikda asraymiz! 🌱</p>
+    </div>
+  </footer>
+
+  <script>
+    // Boshlang'ich statistika va ma'lumotlar
+    const projectData = {
+      volunteers: 5,
+      places: []
+    };
+
+    let currentFilter = "Barchasi";
+
+    function renderStats() {
+      const totalTrees = projectData.places.reduce((sum, item) => sum + Number(item.trees), 0);
+      document.getElementById("volunteerCount").textContent = projectData.volunteers.toLocaleString("uz-UZ");
+      document.getElementById("treeCount").textContent = totalTrees.toLocaleString("uz-UZ");
+      document.getElementById("placeCount").textContent = projectData.places.length;
+    }
+
+    function renderPlaces() {
+      const grid = document.getElementById("placesGrid");
+      const query = document.getElementById("searchInput").value.toLowerCase().trim();
+
+      if (projectData.places.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <span>🌱</span>
+            <strong>Hozircha obodonlashtirilgan hududlar qo‘shilmagan</strong>
+            <p style="margin-top: 6px; font-size: 0.92rem;">Tez orada ilk ko‘chat ekish aksiyalarimiz manzillari shu yerda e’lon qilinadi.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const filtered = projectData.places.filter(place => {
+        const matchesCategory = currentFilter === "Barchasi" || place.category === currentFilter;
+        const matchesQuery =
+          place.name.toLowerCase().includes(query) ||
+          place.desc.toLowerCase().includes(query) ||
+          place.category.toLowerCase().includes(query);
+        return matchesCategory && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<p style="color: var(--muted); grid-column: 1 / -1;">Qidiruv bo‘yicha hudud topilmadi.</p>`;
+        return;
+      }
+
+      grid.innerHTML = filtered
+        .map(
+          place => `
+          <div class="place-card">
+            <div>
+              <div class="place-top">
+                <span class="badge">${place.category}</span>
+                <span class="place-date">${place.date}</span>
+              </div>
+              <h3>${place.name}</h3>
+              <p class="place-desc">${place.desc}</p>
+            </div>
+            <div class="place-footer">
+              <span>🌱 Ekilgan ko‘chatlar:</span>
+              <span>+${Number(place.trees).toLocaleString("uz-UZ")} ta</span>
+            </div>
+          </div>
+        `
+        )
+        .join("");
+    }
+
+    // Filtr tugmalari
+    document.getElementById("filterPills").addEventListener("click", e => {
+      if (!e.target.classList.contains("pill")) return;
+      document.querySelectorAll(".pill").forEach(btn => btn.classList.remove("active"));
+      e.target.classList.add("active");
+      currentFilter = e.target.dataset.filter;
+      renderPlaces();
+    });
+
+    // Qidiruv
+    document.getElementById("searchInput").addEventListener("input", renderPlaces);
+
+    // Sahifani yuklash
+    renderStats();
+    renderPlaces();
+  </script>
+</body>
+</html>
