@@ -294,6 +294,92 @@
       color: var(--muted);
     }
 
+    /* Keyingi aksiya e'lon kartochkasi */
+    .event-banner {
+      background: linear-gradient(135deg, #f3faf5 0%, #e6f5eb 100%);
+      border: 2px solid #bfe3cc;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .event-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .event-banner h3 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .event-banner p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .event-details {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .event-detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .event-detail-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .event-detail-row strong {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .event-detail-row span {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .event-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
     /* Jamoa sardorlari kartochkalari */
     .leaders-grid {
       display: grid;
@@ -565,6 +651,11 @@
       nav a:not(.btn) {
         display: none;
       }
+
+      .event-banner {
+        grid-template-columns: 1fr;
+        padding: 24px;
+      }
     }
   </style>
 </head>
@@ -578,6 +669,7 @@
         <span>Yashil Makon</span>
       </a>
       <nav>
+        <a href="#keyingi-aksiya">Keyingi aksiya</a>
         <a href="#statistika">Statistika</a>
         <a href="#sardorlar">Sardorlar</a>
         <a href="#hududlar">Hududlar</a>
@@ -595,8 +687,8 @@
         “Yashil Makon” — shahrimizni ko‘kalamzorlashtirish, bog‘ va ko‘chalarga daraxt ekish hamda tabiatni asrash uchun birlashgan faol yoshlar jamoasi.
       </p>
       <div class="hero-actions">
-        <a href="#murojaat" class="btn btn-white">Murojaat uchun</a>
-        <a href="#sardorlar" class="btn btn-glass">Jamoa sardorlari</a>
+        <a href="#keyingi-aksiya" class="btn btn-white">Keyingi tozalash aksiyasi</a>
+        <a href="#murojaat" class="btn btn-glass">Murojaat uchun</a>
       </div>
     </div>
   </section>
@@ -629,6 +721,70 @@
       </div>
     </div>
   </div>
+
+  <!-- Keyingi tozalash ishlari bo'limi -->
+  <section id="keyingi-aksiya">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Keyingi tozalash ishlari olib boriladigan hududimiz</h2>
+          <p>Shahrimiz ozodaligi va obodonchiligi uchun navbatdagi umumiy aksiyamizga barchani taklif qilamiz!</p>
+        </div>
+      </div>
+
+      <div class="event-banner">
+        <div>
+          <span class="event-badge">📢 Navbatdagi tozalash ishi e’loni</span>
+          <h3>Angren shahar “Kaltso” hududida tozalash va obodonlashtirish aksiyasi</h3>
+          <p>
+            Tabiatga befarq bo‘lmagan barcha shahrimiz aholisi, yoshlar va ko‘ngillilarni ushbu xayrli ishda faol qatnashishga taklif qilib qolamiz. Birgalikda shahrimizni yanada toza va go‘zal maskanga aylantiraylik!
+          </p>
+          <div class="event-actions">
+            <a href="https://t.me/Yashil_Makon_Angren" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              Telegram kanalda kuzatish
+            </a>
+            <a href="https://t.me/ApexGGs" target="_blank" rel="noopener noreferrer" class="btn btn-telegram">
+              Savollar uchun yozish
+            </a>
+          </div>
+        </div>
+
+        <div class="event-details">
+          <div class="event-detail-row">
+            <div class="event-detail-icon">📅</div>
+            <div>
+              <strong>Sana va kun</strong>
+              <span>29-noyabr, yakshanba</span>
+            </div>
+          </div>
+
+          <div class="event-detail-row">
+            <div class="event-detail-icon">⏰</div>
+            <div>
+              <strong>Boshlanish vaqti</strong>
+              <span>Soat 10:00 da</span>
+            </div>
+          </div>
+
+          <div class="event-detail-row">
+            <div class="event-detail-icon">📍</div>
+            <div>
+              <strong>Manzil va mo‘ljal</strong>
+              <span>Angren shahar kaltso (Tanho do‘koni to‘g‘risi)</span>
+            </div>
+          </div>
+
+          <div class="event-detail-row">
+            <div class="event-detail-icon">🤝</div>
+            <div>
+              <strong>Ishtirok etish</strong>
+              <span>Barcha ko‘ngillilar uchun ochiq — hammani taklif qilamiz!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Jamoa sardorlari bo'limi -->
   <section id="sardorlar">
